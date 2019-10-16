@@ -1,0 +1,104 @@
+
+
+    var authServiceSetted = false;
+
+    function setupAuthServiceVars() {
+        Ebre.Namespace("Ebre.Venezia.AuthService");
+
+        Ebre.Venezia.AuthService.ServiceEnabled = true;
+        Ebre.Venezia.AuthService.UserUseNam = true;
+        Ebre.Venezia.AuthService.StatusCheckInterval = 1000;
+
+        Ebre.Namespace("Ebre.Venezia.AuthService.Urls");
+
+        Ebre.Venezia.AuthService.Urls.GetStatus = '/pl/AuthService/api/GetStatus';
+        Ebre.Venezia.AuthService.Urls.Cancel = '/pl/AuthService/api/Cancel';
+        Ebre.Venezia.AuthService.Urls.GetData = '/pl/AuthService/api/GetInitializationData';
+
+        Ebre.Venezia.AuthService.ScriptUrl = '/AuthService/Resources/par_axd/AuthService?file=Scripts%2FAuthorization%2Fmain.built.js&v=18323d29e05f8daa780ab3ae15222d3a';
+
+
+Ebre.Namespace("Ebre.Venezia.AuthService.Styles");
+    
+        Ebre.Venezia.AuthService.Styles['Inner'] = [];
+    
+        Ebre.Venezia.AuthService.Styles['Inner']['addressbook'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Faddressbook-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['adressbookcreatenew'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fadressbookcreatenew-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['basket'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fbasket-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['blik'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fblik-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['cards'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fcards-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['common'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fcommon-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['consentchecked'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fconsentchecked-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['consent'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fconsent-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['forex'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fforex-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['insurance'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finsurance-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['investmentfundsbuy'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finvestmentfundsbuy-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['investmentfundsdelete'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finvestmentfundsdelete-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['investmentfundsmifid'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finvestmentfundsmifid-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['investmentfunds'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finvestmentfunds-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['investmentfundswhite'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Finvestmentfundswhite-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['authorizationsandlimits'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fauthorizationsandlimits-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['loans'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Floans-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['mobilemtransfer'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fmobilemtransfer-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['mtransfer'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fmtransfer-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['notifications'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fnotifications-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['operations'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Foperations-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['payments'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fpayments-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['paymentszus'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fpaymentszus-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['periodicpayments'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fperiodicpayments-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['securestatements'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fsecurestatements-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['settings'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fsettings-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Inner']['emax'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Femax-plugin-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+
+    
+        Ebre.Venezia.AuthService.Styles['Outer'] = [];
+    
+        Ebre.Venezia.AuthService.Styles['Outer']['addressbook'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Faddressbook-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Outer']['common'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fcommon-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Outer']['mtransfer'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Fmtransfer-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Outer']['emax'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Femax-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Outer']['accesstobank'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Faccesstobank-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+        Ebre.Venezia.AuthService.Styles['Outer']['logging'] = '/AuthService/Resources/par_axd/AuthService?file=styles%2Fauthorization%2Flogging-plugin-parent-styles.css&amp;v=18323d29e05f8daa780ab3ae15222d3a';
+
+
+
+    }
+
+    var auth = null
+
+    function LoadAuthService(completeCallback) {
+        if (auth && completeCallback) {
+            completeCallback(auth);
+            return;
+        }
+
+        $('.auth-plugin').hide();
+        if (!authServiceSetted) {
+            setupAuthServiceVars();
+        }
+        require([Ebre.Venezia.AuthService.ScriptUrl], function() {
+            require(['AuthService/Scripts/Authorization/authService', 'AuthService/Scripts/setup'], function(authService, setup) {
+                auth = authService;
+                if (!authServiceSetted) {
+                    setup.setLocale('pl');
+                    setup.setTemplates();
+                    authServiceSetted = true;
+                }
+                if (completeCallback) {
+                    completeCallback(authService);
+                }
+            });
+        });
+    }
+
+    window.setTimeout(function() {
+        require(['/AuthService/Resources/par_axd/AuthService?file=Scripts%2FAuthorization%2Fmain.built.js&v=18323d29e05f8daa780ab3ae15222d3a'], function() { // preload auth-service file
+            // fallback for old style of using that plugin
+            LoadAuthService(function(authService) {
+                Ebre.Namespace("Ebre.Venezia.AuthHubService");
+                Ebre.Venezia.AuthHubService.Plugin = authService;
+            });
+        }); 
+    }, 0);
+
+

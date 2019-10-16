@@ -1,0 +1,1580 @@
+@import url("../libs/kendo/styles/kendo.bootstrap.min.css");
+@import url("../libs/kendo/styles/kendo.common.min.css");
+@import url("../libs/kendo/styles/kendo.common-bootstrap.min.css");
+
+/*@import url("../libs/bootstrap/bootstrap.min.css");*/
+
+
+/******************************************************************
+							INFO     
+    
+	body.epm-ntw - zwykłe okna GWT
+ 	body > div.epm-ntw - okna odpiete 
+*******************************************************************/
+
+
+/******************************************************************
+** APLICATION
+*******************************************************************/
+
+
+/*Ustawienia całości aplikacji*/
+
+.body-style {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden !important;
+}
+.epm-ntw,
+.epm-ntw table td {
+    font-size: 11px;
+    font-family: Arial, Tahoma, Helvetica !important;
+    font-style: normal;
+    height: 50%;
+    /*Wylaczenie mozliwosci zaznaczania tekstu*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*Nie zmienia kursora po najechaniu na tekst*/
+    cursor: default;
+}
+.epm-ntw .k-grid:not([kendo-grid="tableGridDemo"]) {
+    height: 100% !important;
+}
+.k-overlay {
+    opacity: .1 !important;
+}
+
+/*Przyciski Kendo*/
+
+.k-button,
+.k-button:hover,
+.k-button.k-state-hover,
+.k-button.k-state-focused,
+.k-button:focus,
+.k-button:focus:not (.k-state-disabled):not ([disabled]),
+.k-button:focus:active:not (.k-state-disabled):not ([disabled]) {
+    box-shadow: none;
+}
+
+/*Stopka okien modalnych*/
+
+.modal-footer {
+    padding-right: 0;
+    padding-bottom: 0;
+}
+.epm-ntw-cursor,
+.epm-ntw .creator .k-in {
+    cursor: pointer;
+}
+
+/* Poprawienie stylu Bootstap dla calości aplikacji*/
+
+ol,
+ul {
+    margin-bottom: initial !important;
+}
+
+/******************************************************************
+** LOADING MASK
+*******************************************************************/
+
+.k-loading-mask {
+    z-index: 20000;
+}
+.k-loading-image {
+    background-image: url('../img/loading-image.gif');
+}
+[id*="_TABLE"] div.k-loading-color,
+body>div.epm-ntw .k-loading-color {
+    background-color: rgb(244, 244, 244);
+    opacity: 1 !important;
+}
+[id*="_TABLE"] div.k-loading-mask,
+body>div.epm-ntw .k-loading-mask {
+    z-index: 10;
+}
+
+/******************************************************************
+** WINDOW
+*******************************************************************/
+
+
+/* komunikat bledu */
+
+.errorWindow button {
+    display: block;
+    margin: 0 auto;
+}
+
+/*Nagłówek okna*/
+
+.k-window-titlebar {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*Element okna*/
+
+[id^="kWindow"] {
+    overflow: hidden !important;
+}
+
+/*Span w nagłówku okna*/
+
+.k-window-title {
+    vertical-align: middle;
+    font-size: 13px;
+    font-family: Arial, Tahoma, Helvetica !important;
+    font-style: normal;
+}
+
+/*Przyciski okna*/
+
+.k-window-titlebar .k-icon,
+.k-window-titlebar .k-link {
+    border-radius: 25px;
+}
+
+/*Przyciski z tekstem*/
+
+.epmNtwTextButton {
+    border-radius: 5px;
+    border: 1px solid #545454;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Label w prawym dolnym rogu tabeli transakcji znikał poniżej 640px szerokości gadgetu */
+
+.k-webkit .k-pager-info {
+    display: block !important;
+}
+
+/* Ukrywanie scrollbarow w oknach odpietych*/
+
+body.ng-scope,
+body>div.epm-ntw,
+body>div.epm-ntw epm-transactions-table>div {
+    overflow: hidden;
+}
+
+/******************************************************************
+** TOOLBAR
+*******************************************************************/
+
+.k-grid-toolbar {
+    border-width: 0 !important;
+}
+
+/*Separator w toolbarze tabeli*/
+
+.epm-ntw .k-separator {
+    border-left: 1px dotted darkgray;
+    display: inline-block;
+    height: 20px;
+    width: 1px;
+    vertical-align: middle;
+    margin-left: 1px;
+}
+
+/*Drugi wiersz toolbara tabeli notowań*/
+
+.epmNtwQuotesTableToolbarSecondRow {
+    padding-top: 4px !important;
+}
+
+/*Zawijanie toolbara*/
+
+.epm-ntw .k-grid .k-grid-toolbar {
+    overflow: hidden;
+    /*border-width: 0;*/
+    /*padding-left: 1px;*/
+}
+
+/*Przyciski z ikonami kendo*/
+
+.epm-ntw .k-grid-toolbar .kendoIconButton {
+    background-color: #F4F4F4;
+    padding: 2px 3px 3px 3px;
+    box-shadow: none !important;
+    width: 25px;
+    height: 25px;
+    margin: 1px 0;
+}
+
+/*Przyciski z ikonami*/
+
+button.iconButton {
+    padding: 0px;
+    border-width: 0px;
+    margin: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+/*Toolbar*/
+
+.tootlbarComboBox {
+    font-size: 12px;
+    margin: 2px;
+}
+
+/* Initial hide the whole toolbar, for unpined windows the standard part */
+
+/*.k-grid-toolbar,
+body>div.epm-ntw .k-grid-toolbar .standardToolbar {
+    display: none;
+}*/
+
+
+/* Initial hide the whole toolbar but not for unpinned window */
+
+body>div.epm-ntw .k-grid-toolbar {
+    display: block;
+}
+
+/* Inicjalne style dla toolbara tabeli transakcji (domyślnie ukryty) - tylko gadgety GWT */
+
+body.epm-ntw [id*="TRANSACTION_TABLE"]>div.k-grid-toolbar {
+    height: 0px;
+    padding: 0px;
+    border-style: none;
+}
+body>div.epm-ntw .k-grid-toolbar {
+    padding-left: 7px !important;
+    padding-right: 7px;
+}
+
+/******************************************************************
+** TABLE (COMMON)
+*******************************************************************/
+
+
+/*Nagłówek kolumn*/
+
+.epm-ntw .k-grid .k-grid-header th {
+    font-size: 11px;
+    text-align: center;
+    padding: 0 2px;
+    position: relative;
+}
+.resizeDiv {
+    position: absolute;
+    top: 14px;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    cursor: col-resize;
+}
+.k-grid-header th.k-header {
+    vertical-align: top;
+}
+.k-grid td {
+    vertical-align: top;
+    border-bottom: 1px solid lightgray;
+    padding: 0 0 0 0;
+    white-space: nowrap;
+    line-height: 1.3em;
+}
+.k-grid-content tr,
+.k-grid-content-locked tr {
+    height: auto !important;
+}
+
+/*Styl ellipsis tekstu*/
+
+.red,
+.green,
+.yellow,
+.white,
+.red-value,
+.green-value,
+.yellow-value,
+.white-value,
+.headerContentPadding>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Wyrównanie kolumn z liczbami do prawej */
+
+.epm-ntw-number-field {
+    text-align: right;
+    padding-right: 2px !important;
+}
+
+/* Usuniecie ramki która powodowała podwójną wysokosc ramek naglowkow kolumn */
+
+.epm-ntw .k-grid-content tr:first-child td,
+.epm-ntw .k-grid-content-locked tr:first-child td {
+    border-top: none;
+}
+
+/* Ustawienie pozycji labeli w naglowkach w celu poprawnego centrowania */
+
+.k-grid th .headerContentPadding span {
+    margin-right: 7px;
+}
+
+/* Kolor pustego miejsca pod kolumnami statycznymi */
+
+.k-grid {
+    background-color: #F4F4F4;
+}
+
+/* Styl czcionki menu kolumn w tabelach */
+
+.k-column-menu {
+    font-size: 11px !important;
+    font-family: Arial, Tahoma, Helvetica !important;
+    font-style: normal !important;
+}
+thead>tr>th {
+    border-top-width: 1px !important;
+}
+
+/******************************************************************
+** TABLE (QUOTES)
+*******************************************************************/
+
+.epm-ntw-quotes-table {
+    /*height: 100%;*/
+    overflow: hidden;
+}
+
+/*Wiersz (wewnętrzna tabela) drag&drop*/
+
+.draganddrop table {
+    table-layout: fixed;
+    opacity: 0.5;
+}
+
+/*Padding naglowkow kolumn*/
+
+.headerPadding {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    height: 4.5em;
+}
+
+/*Padding zawartosci naglowkow kolumn*/
+
+.headerContentPadding {
+    padding-top: 0.5em;
+    padding-bottom: 0.4em;
+    height: auto;
+    min-height: 3.8em;    
+}
+.epm-ntw .k-grid-content-locked .tr-3-display * {
+    maring-top: 0.4em;
+}
+
+.epm-ntw .tr-display{
+    outline: none !important;
+}
+
+
+.epm-ntw .tr-1-display,
+.tr-2-display,
+.tr-3-display,
+.tr-4-display,
+.tr-5-display {}
+.epm-ntw .k-grid-header-locked .tr-3-display {
+    padding-top: 1em;
+}
+.epm-ntw .tr-1-display .row-line-1,
+.tr-2-display .row-line-1,
+.tr-2-display .row-line-2,
+.tr-3-display .row-line-1,
+.tr-3-display .row-line-2,
+.tr-3-display .row-line-3,
+.tr-4-display .row-line-1,
+.tr-4-display .row-line-2,
+.tr-4-display .row-line-3,
+.tr-4-display .row-line-4,
+.tr-5-display .row-line-1,
+.tr-5-display .row-line-2,
+.tr-5-display .row-line-3,
+.tr-5-display .row-line-4,
+.tr-5-display .row-line-5 {
+    display: block;
+    min-height: 1.3em;
+}
+.epm-ntw .tr-1-display .row-line-2,
+.tr-1-display .row-line-3,
+.tr-1-display .row-line-4,
+.tr-1-display .row-line-5,
+.tr-2-display .row-line-3,
+.tr-2-display .row-line-4,
+.tr-2-display .row-line-5,
+.tr-3-display .row-line-4,
+.tr-3-display .row-line-5,
+.tr-4-display .row-line-5 {
+    display: none;
+}
+
+/*Menu kolumny - pozycje menu*/
+
+.k-menu .k-item>.k-link {
+    padding: 0.4em 1em 0.4em !important;
+    font-size: 11px;
+    font-weight: normal !important;
+}
+
+/*Menu wyboru widocznych kolumn - cale menu*/
+
+div.k-animation-container>div.k-column-menu>ul>li.k-item.k-columns-item>div>ul {
+    width: auto;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    border-color: #000000;
+    background-color: #F5F5F5;
+    padding-bottom: 0.2em;
+}
+
+/*Menu wyboru widocznych kolumn - pozycje menu*/
+
+div.k-animation-container>div>ul>li.k-item.k-columns-item>div>ul>li {
+    padding: 0em 0em 0em !important;
+}
+
+/*Menu wyboru widocznych kolumn - wszystkie elementy danej pozycji menu*/
+
+div.k-animation-container>div>ul>li.k-item.k-columns-item>div>ul>li>* {
+    display: inline-block !important;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    cursor: pointer;
+}
+
+/*Menu wyboru widocznych kolumn - pozycjonowanie labeli jeden za drugim*/
+
+div.k-animation-container>div>ul>li.k-item.k-columns-item>div>ul>li>div>span {
+    display: inline-block !important;
+    border-right: 1px solid;
+    padding-right: 0.3em;
+    padding-left: 0.3em;
+    font-size: 11px;
+    font-weight: normal !important;
+}
+
+/*Menu wyboru widocznych kolumn - ostani label w danej pozycji menu*/
+
+div.k-animation-container>div>ul>li.k-item.k-columns-item>div>ul>li>div>span:last-child {
+    display: inline-block !important;
+    border-right: none;
+    padding-right: 0.6em;
+}
+
+/*Separator w tabeli notowań*/
+
+.epm-ntw .no-data {
+    height: 1em;
+}
+.epm-ntw .k-grid,
+.epm-ntw .k-grid-content-locked,
+.epm-ntw .k-grid-footer-locked,
+div.k-grid-header {
+    border-width: 0;
+}
+.epm-ntw .k-grid-header-locked,
+.epm-ntw .k-grid-header-wrap {
+    border-width: 0 0 0 0;
+}
+.epm-ntw .k-grid tr td {
+    border-width: 1px 1px 0 0;
+}
+.epm-ntw .k-grid tr:last-child td {
+    border-bottom-width: 1px;
+}
+.epm-ntw .k-grid-content-locked tr td:first-child,
+.epm-ntw .k-grid-header-locked th.k-header:first-child {
+    border-left-width: 1px;
+}
+.epm-ntw .k-grid tr th,
+.epm-ntw .k-grid-header th.k-header,
+.k-grid-header-locked th.k-header {
+    border-width: 0 1px 2px 0;
+}
+.epm-ntw .k-grid-content {
+    overflow: auto;
+}
+.epm-ntw .k-grid-header {
+    padding-right: 0 !important;
+    border-width: 1px 0 0 0;
+}
+
+/******************************************************************
+** TABLE (TRANSACTIONS)
+*******************************************************************/
+
+div.k-grid-content>div.k-virtual-scrollable-wrap>table>tbody>tr>td {
+    padding-left: 0.4em;
+}
+.epm-ntw .transactionsTable .k-resize-handle {
+    display: block !important;
+}
+.epm-ntw .transactionsTable {
+    border-width: 0px;
+}
+.epm-ntw .transactionsTable .k-grid-pager {
+    border-bottom-width: 0px;
+}
+.epm-ntw .transactionsTable .k-pager-wrap {
+    line-height: 1em;
+    box-shadow: none;
+}
+.epm-ntw .transactionsTable .k-pager-wrap .k-pager-input {
+    padding: 0;
+    margin: 0px 0.2em 0px 0.2em;
+    line-heigth: 1em;
+}
+.epm-ntw .transactionsTable .k-pager-wrap .k-pager-input .k-textbox {
+    width: 1.5em;
+    height: 1.5em;
+    text-indent: 0;
+    text-align: center;
+    margin: 0px .4em 0px 0px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+.epm-ntw .transactionsTable .k-pager-wrap .k-pager-nav,
+.epm-ntw .transactionsTable .k-pager-wrap .k-link:hover {
+    border-width: 0px;
+    background-color: transparent;
+    line-height: 1em;
+    height: 1.5em !important;
+    padding: 2px 1px 2px 1px;
+    border-radius: 4px;
+    outline-color: initial !important;
+    color: black !important;
+    outline-offset: 0px;
+    outline-style: none;
+    outline-width: 0px;
+}
+.epm-ntw .transactionsTable .k-pager-wrap .k-pager-nav:hover {
+    border-width: 1px;
+    padding: 2px 0px 2px 0px !important;
+    border-radius: 4px;
+}
+.epm-ntw .transactionsTable .k-pager-wrap .k-pager-info {
+    line-height: 2em;
+}
+epm-transactions-table .k-grid .k-grid-content {
+    overflow-y: hidden;
+}
+epm-transactions-table .k-grid-header {
+    padding-right: 0 !important;
+}
+epm-transactions-table div.k-grid-content>table>tbody>tr>td:nth-child(1),
+epm-transactions-table div.k-grid-header-wrap tr>th:nth-child(1) {
+    border-left-width: 1px !important;
+    border-left-style: solid !important;
+}
+
+/******************************************************************
+** ALERTS LIST
+*******************************************************************/
+
+/*Przyciski z ikonami kendo*/
+
+.epm-ntw .alerts-button-list {
+    display: block;
+    height: 30px;
+    position: absolute;
+    bottom: 6px;
+    right: 5px;
+    width: 100%;
+    padding-top: 12px;
+}
+
+.epm-ntw .alerts-button-list .button {
+    background-color: #F4F4F4;
+    padding: 3px;
+    box-shadow: none !important;
+    width: 70px;
+    height: 26px;
+    margin: 1px 0;
+    float: right;
+}
+
+/*Przyciski z ikonami po najechaniu i wcisniety*/
+
+.epm-ntw .alerts-button-list .button:hover,
+.epm-ntw .alerts-button-list .buttonHover {
+    border: 1px ridge #AAAAAA !important;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    max-width: 70px;
+    margin: 0px !important;
+}
+
+/* dropdown lists */
+.epm-ntw .alerts-drop-down-list {
+	margin: 2px auto 2px auto;
+	font-size: 11px;
+    display: block;
+    border: 0;
+}
+
+.epm-ntw .alerts-drop-down-list:hover span,
+.epm-ntw .alerts-drop-down-list .k-state-active,
+.epm-ntw .alerts-drop-down-list .k-state-focused{
+	background-color: #FFF;
+	box-shadow: none;
+}
+
+.epm-ntw .k-list-scroller li.k-state-selected{
+	background-color: #FFF !important;
+	border: 0px !important;
+	box-shadow: none;
+}
+       
+.epm-ntw .alerts-drop-down-cond {
+    width: 161px !important;
+}
+
+.epm-ntw .alerts-drop-down-oper {
+    width: 45px;
+}
+
+.epm-ntw .form-field input {
+    width: 163px;
+}
+
+        
+/*Przyciski z ikonami*/
+
+div.button {
+    margin: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 25px;
+    width: 70px;
+    cursor: pointer;
+}
+
+div.k-grid-content>div.k-virtual-scrollable-wrap>table>tbody>tr>td {
+    padding-left: 0.4em;
+}
+.epm-ntw .alertsList .k-resize-handle {
+    display: block !important;
+}
+.epm-ntw .alertsList {
+    border-width: 0px;
+    position: relative;
+}
+
+.epm-ntw .alertsList .k-grid-pager {
+    border-bottom-width: 0px;
+}
+.epm-ntw .alertsList .k-pager-wrap {
+    line-height: 1em;
+    box-shadow: none;
+}
+.epm-ntw .alertsList .k-pager-wrap .k-pager-input {
+    padding: 0;
+    margin: 0px 0.2em 0px 0.2em;
+    line-heigth: 1em;
+}
+.epm-ntw .alertsList .k-pager-wrap .k-pager-input .k-textbox {
+    width: 1.5em;
+    height: 1.5em;
+    text-indent: 0;
+    text-align: center;
+    margin: 0px .4em 0px 0px;
+    -webkit-box-sizing: content-box !important;
+    -moz-box-sizing: content-box !important;
+    box-sizing: content-box !important;
+}
+.epm-ntw .alertsList .k-pager-wrap .k-pager-nav,
+.epm-ntw .alertsList .k-pager-wrap .k-link:hover {
+    border-width: 0px;
+    background-color: transparent;
+    line-height: 1em;
+    height: 1.5em !important;
+    padding: 2px 1px 2px 1px;
+    border-radius: 4px;
+    outline-color: initial !important;
+    color: black !important;
+    outline-offset: 0px;
+    outline-style: none;
+    outline-width: 0px;
+}
+.epm-ntw .alertsList .k-pager-wrap .k-pager-nav:hover {
+    border-width: 1px;
+    padding: 2px 0px 2px 0px !important;
+    border-radius: 4px;
+}
+.epm-ntw .alertsList .k-pager-wrap .k-pager-info {
+    line-height: 2em;
+}
+
+/******************************************************************
+** QUOTES TIME
+*******************************************************************/
+
+.epmNtw-quotesTime {
+    padding-top: 7px;
+    padding-right: 75px;
+}
+
+/******************************************************************
+** VALIDATION ERROR
+*******************************************************************/
+
+.alert-box {
+    color: red;
+    border-radius: 5px;
+    font-size: 0.7em;
+    padding: 10px 20px;
+    margin: 5px 0px 0px 0px;
+    box-shadow: 0px 1px 5px 2px lightgrey;
+}
+
+/*h-shadow v-shadow blur spread color*/
+
+.alert-box span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/******************************************************************
+** TITLE CHANGE WINDOW
+*******************************************************************/
+
+.titleChangeWindow {
+    font-size: 11px;
+}
+.titleChangeWindow .modal-body {
+    padding: 15px 15px 0px 15px;
+}
+
+/******************************************************************
+** CONTEXT MENU
+*******************************************************************/
+
+.epmNtwContextMenu {
+    white-space: nowrap !important;
+}
+
+/******************************************************************
+** HIGHLIGHTING dla wylaczonego parametru isValueHightliting : false || undefined
+*******************************************************************/
+
+.red {
+    background-color: #FFCAC6 !important;
+    color: #000000 !important;
+}
+.green {
+    background-color: #BCFFBC !important;
+    color: #000000 !important;
+}
+.yellow {
+    background-color: #FFFFA0 !important;
+    color: #000000 !important;
+}
+.white:not (.epm-ntw div.k-grid-content-locked) {
+    background-color: none !important;
+    color: black !important;
+}
+.red,
+.green,
+.yellow,
+.white {
+    padding-left: 0.4em;
+}
+
+/******************************************************************
+** HIGHLIGHTING - dla wlaczonego parametru isValueHightliting : true
+*******************************************************************/
+
+.red-value {
+    color: #EE0000;
+    font-weight: bold;
+    padding-left: 0.4em;
+}
+.green-value {
+    color: #009900;
+    font-weight: bold;
+    padding-left: 0.4em;
+}
+.yellow-value {
+    color: black;
+    font-weight: bold;
+    padding-left: 0.4em;
+}
+.white-value {
+    font-weight: normal;
+    padding-left: 0.4em;
+}
+
+/*Styl nadawany gdy ustawiona zostanie pogrubiona czcionka*/
+
+.bold-text div div {
+    font-weight: bold !important;
+}
+
+/***************************************************************************
+** ARROWS
+****************************************************************************/
+
+.epmNtwUpArrow {    
+    background-image: url(../img/icoup.gif);
+}
+.epmNtwDownArrow {    
+    background-image: url(../img/icodown.gif);
+}
+.epmNtwNoArrow {
+    display: inline-block;
+    background-image: none;
+    background-size: 1.1em 1.1em;
+    width: 1.1em;
+    /*height: 1.1em;*/
+}
+
+/* Klasa uzywana dla pol w ktorych znajduja sie strzalki jak i dla tych gdzie strzalki znajduja sie w tym samym divie */
+.epmNtwArrow {
+    padding-right: 15px !important;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+/******************************************************************
+** KREATOR TABELI
+*******************************************************************/
+
+
+/* styl dla bootsrapowych col, aby sie nie rozjezdzaly paddingi */
+
+
+.epm-ntw .creator .basketForm {
+    margin-left: 10px;
+}
+.k-window {
+    transform: none !important
+}
+.epm-ntw .creator .basketInput {
+    height: initial !important;
+    font-size: 12px;
+    line-height: initial;
+    width: 200px;
+    display: inline-block;
+}
+
+.modal-header{
+  min-height: 16.43px;padding: 15px;border-bottom: 1px solid #e5e5e5
+}.modal-header.close{
+  margin-top: -2px
+}.modal-body{
+  position: relative;padding: 15px
+}.modal-footer{
+  padding: 15px;text-align: right;border-top: 1px solid #e5e5e5; padding-bottom: 0
+}.modal-footer.btn+.btn{
+  margin-bottom: 0;margin-left: 5px
+}.modal-footer.btn-group.btn+.btn{
+  margin-left: -1px
+}.modal-footer.btn-block+.btn-block{
+  margin-left: 0
+}
+
+
+/* IE nie obsluguje 'initial'. Dotyczy tylko IE */
+
+*::-ms-backdrop,
+.epm-ntw .creator .basketInput {
+    height: inherit !important;
+    line-height: inherit;
+}
+
+/* kontener dla kolumn kreatora */
+
+.epm-ntw .creator .creator-column-container {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+/* kolumna kreatora */
+
+.epm-ntw .creator .creator-column-container .creator-column {
+    height: 25em;
+    max-height: 25em;
+}
+
+/* kolumna kreatora dla drzewa */
+
+.epm-ntw .creator .creator-column-container .creator-column-tree {
+    height: 25em;
+    max-height: 25em;
+    border-width: 1px !important;
+}
+
+/* podpis z gielda i waluta dla poztcji kreatora */
+
+.epmNtwStockClass {
+    color: black;
+    font-size: 80%;
+    padding-left: 5px;
+}
+
+/* dolna czesc srodkowej kolumny */
+
+.epm-ntw .creator .creator-source-list-bottom {
+    height: 22.35em;
+    max-height: 22.35em;
+    margin-top: 0.2em;
+    overflow: auto;
+}
+
+/* padding dla elementow listy */
+
+.epm-ntw .creator .creator-element-padding {
+    padding: 3px;
+}
+
+/* kolor zablokowanej srodkowej kolumny z papierami */
+
+.epm-ntw .creator .creator-disabled {
+    background-color: #EEE;
+}
+
+/* kolor odblokowanej srodkowej kolumny z papierami */
+
+.epm-ntw .creator .creator-enabled {
+    background-color: #FFF;
+}
+
+/* wyrownanie dla radio i checkbox 
+
+.epm-ntw .creator input[type=checkbox],
+input[type=radio] {
+    margin: 0px 0 0;
+}*/
+
+.col-md-12,
+.col-md-3,
+.col-md-4,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-xs-12,
+.col-xs-10,
+.col-xs-8,
+.col-xs-2,
+.col-xs-4,
+.col-xs-7 {
+  float: left;
+  position: relative;
+  min-height: 1px;    
+  padding-right: 0px;
+  padding-left: 0px;
+}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}
+.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}
+.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}
+.text-right {
+    text-align:right;
+  }
+.radio-inline input[type=radio]{
+  position: absolute;margin-top: 4px\9;margin-left: -20px
+}.checkbox+.checkbox,
+.radio+.radio{
+  margin-top: -5px
+}.checkbox-inline,
+.radio-inline{
+  position: relative;display: inline-block;padding-left: 20px;margin-bottom: 0;font-weight: 400;vertical-align: middle;cursor: pointer
+}.checkbox-inline+.checkbox-inline,
+.radio-inline+.radio-inline{
+  margin-top: 0;margin-left: 10px
+}
+
+@media(min-width: 992px){
+  .col-md-12,
+  .col-md-3,
+  .col-md-4,
+  .col-md-6,
+  .col-md-9,
+  .col-md-7{
+    float: left;
+      position: relative;
+  min-height: 1px;    
+  padding-right: 0px;
+  padding-left: 0px;
+  }.col-md-12{
+    width: 100%
+  }.col-md-7{
+    width: 58.33333333%;
+  }.col-md-6{
+    width: 50%
+  }.col-md-9{
+    width: 75%
+  }.col-md-4{
+    width: 33.33333333%;
+  }.col-md-3{
+    width: 25%
+  }.col-md-pull-12{
+    right: 100%
+  }.col-md-pull-7{
+    right: 58.33333333%
+  }.col-md-pull-6{
+    right: 50%
+  }.col-md-pull-4{
+    right: 33.33333333%
+  }.col-md-pull-3{
+    right: 25%
+  }.col-md-push-12{
+    left: 100%
+  }.col-md-push-7{
+    left: 58.33333333%
+  }.col-md-push-6{
+    left: 50%
+  }.col-md-push-4{
+    left: 33.33333333%
+  }.col-md-push-3{
+    left: 25%
+  }.col-md-offset-12{
+    margin-left: 100%
+  }.col-md-offset-7{
+    margin-left: 58.33333333%
+  }.col-md-offset-6{
+    margin-left: 50%
+  }.col-md-offset-4{
+    margin-left: 33.33333333%
+  }.col-md-offset-3{
+    margin-left: 25%
+  }
+}
+
+label{
+  display: inline-block;max-width: 100%;margin-bottom: 5px;font-weight: 700
+}
+
+
+/******************************************************************
+** Kolumna LW (liczba wierszy)
+*******************************************************************/
+
+.epm-ntw .lw-column {
+    position: absolute;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+/*margin dla naglowka lw*/
+
+.epm-ntw .k-header .lw-column {
+    margin-top: 1em;
+}
+
+/*margin dla column w tabeli dla lw*/
+
+.epm-ntw .k-grid-content-locked .lw-column {
+    margin-left: 0.55em;
+}
+
+/*ikona 5 ofert dla parametru epmNtw.config.isRowLineColumn*/
+
+.epm-ntw .count-5 {
+    background-image: url(../img/oferta5.png);
+}
+
+/*ikona 5 ofert dla parametru epmNtw.config.isRowLineColumn*/
+
+.epm-ntw .count-3 {
+    background-image: url(../img/oferta3.png);
+}
+
+/*ikona 5 ofert dla parametru epmNtw.config.isRowLineColumn*/
+
+.epm-ntw .count-1 {
+    background-image: url(../img/oferta1.png);
+}
+
+/* Ukrycie strzalki menu kolumn dla columny z iloscia wierszy */
+
+epm-quotes-table [data-field="lw"] .k-icon.k-i-arrowhead-s {
+    visibility: hidden;
+}
+
+/******************************************************************
+** FONT CHANGE
+*******************************************************************/
+
+
+/*Wysokosc tabeli*/
+
+[kendo-grid="tableGridDemo"]>div.k-grid-content {
+    height: 200px;
+}
+
+/*Wysrodkowanie toolbara*/
+
+.epm-ntw .fontToolbar {
+    width: 50em;
+    margin-bottom: 1.2em;
+}
+
+/*Margines elementow toolbara*/
+
+.epm-ntw .marginChilds>* {
+    margin-right: 0.5em;
+}
+
+/*Margines ostatniego elementu toolbara*/
+
+.epm-ntw .marginChilds>*:last-child {
+    margin-right: 0;
+}
+
+/*Wysrodkowanie checkboxa w pionie*/
+
+.epm-ntw input.checkBoxCenterVertical {
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+.epm-ntw div.buttonPanel>* {
+    margin-top: 1em !important;
+}
+.epm-ntw div.buttonPanel {
+    float: right;
+    position: absolute;
+    bottom: 15px;
+    right: 25px;
+}
+.epm-ntw.fontChangeWindowContent {
+    padding-top: 0.5em !important;
+}
+.k-list-filter>input {
+    z-index: 2;
+}
+.k-list-scroller {
+    overflow: auto;
+    position: relative;
+}
+
+.epm-ntw.fontChangeWindowContent .col-md-12 {
+    height: 260px;
+}
+
+.epm-ntw.fontChangeWindowContent .col-md-12>div {
+    height: 100%;
+}
+
+.epm-ntw.fontChangeWindowContent .k-grid-content {
+    position: absolute;
+    bottom: 0px;    
+    overflow-x:  inherit !important;
+    overflow-y: scroll;
+}
+
+.epm-ntw.fontChangeWindowContent .k-grid-content-locked {
+    position: absolute;
+    bottom: 17px;
+}
+
+.epm-ntw.fontChangeWindowContent .transactionsTable .k-grid-content {
+    width: auto;
+    overflow-x: scroll;
+}
+
+.epm-ntw.fontChangeWindowContent .transactionsTable .k-grid-header-wrap {
+    width: auto;
+}
+
+
+/******************************************************************
+** ERROR WINDOW
+*******************************************************************/
+
+.errorWindow {
+    padding: 15px 15px 15px 15px;
+    width: 25em;
+}
+div.errorWindow>div>button {
+    margin-top: 20px;
+    width: 4em;
+}
+div.errorWindow>div>span {
+    padding-left: 50px;
+    width: 20em;
+    position: relative;
+    top: 50%;
+    display: block;
+    transform: translateY(-50%);
+}
+div.errorWindow>div {
+    margin-bottom: 20px;
+}
+
+div.confirmWindow {
+    text-align:center;
+}
+
+/******************************************************************
+** BUTTONS ICONS
+*******************************************************************/
+
+.epm-ntw .titleChangeButton {
+    background: url(../img/zmiana_nazwy.png);
+}
+.epm-ntw .titleChangeButton:hover {
+    background: url(../img/zmiana_nazwy_over.png);
+}
+.epm-ntw .fontChangeButton {
+    background: url(../img/zmien_czcionke.png);
+}
+.epm-ntw .fontChangeButton:hover {
+    background: url(../img/zmien_czcionke_over.png);
+}
+.epm-ntw .adjustColumnsWidthToContentButton {
+    background: url(../img/dopasuj_kol_zawart.png);
+}
+.epm-ntw .adjustColumnsWidthToContentButton:hover {
+    background: url(../img/dopasuj_kol_zawart_over.png);
+}
+.epm-ntw .adjustColumnsWidthToWindowButton {
+    background: url(../img/dopasuj_szer_do_okna.png);
+}
+.epm-ntw .adjustColumnsWidthToWindowButton:hover,
+.epm-ntw .adjustColumnsWidthToWindowButtonPushed {
+    background: url(../img/dopasuj_szer_do_okna_over.png);
+}
+.epm-ntw .enableScrollingButton {
+    background: url(../img/przewin_wylaczony.png);
+}
+.epm-ntw .enableOneRowScrollingButton {
+    background: url(../img/przewin_wiersz.png);
+}
+.epm-ntw .enableWholeAreaScrollingButton {
+    background: url(../img/przewin_caly_obszar.png);
+}
+.epm-ntw .enableScrollingButton:hover {
+    background: url(../img/przewin_wylaczony_over.png);
+}
+.epm-ntw .highlightingTitleButton {
+    background: url(../img/podswietlenie_wylaczone.png);
+}
+.epm-ntw .highlightingTitleButton:hover,
+.epm-ntw .highlightingTitleButtonPushed {
+    background: url(../img/podswietlenie_over.png);
+}
+.epm-ntw .automaticSortingTitleButton {
+    background: url(../img/sortowanie_wlaczone.png);
+}
+.epm-ntw .automaticSortingTitleButton:hover,
+.epm-ntw .automaticSortingTitleButtonPushed {
+    background: url(../img/sortowanie_wylaczone_over.png);
+}
+.epm-ntw .removeRowButton {
+    background: url(../img/usun_papier.png);
+    background-repeat:no-repeat;
+}
+.epm-ntw .removeRowButtonDisabled {
+    background: url(../img/usun_papier_wylaczona.png);
+    background-repeat:no-repeat;
+}
+.epm-ntw .removeRowButton:hover {
+    background: url(../img/usun_papier_over.png);
+    background-repeat:no-repeat;
+}
+.epm-ntw .openSecuritiesCreatorButton {
+    background: url(../img/edytuj_liste_papierow.png);
+}
+.epm-ntw .openSecuritiesCreatorButton:hover {
+    background: url(../img/edytuj_liste_papierow_over.png);
+}
+.epm-ntw .addNewRowAlwaysVisibleButton {
+    background: url(../img/newRowVisible.png);
+}
+.epm-ntw .addNewRowAlwaysVisibleButton:hover,
+.epm-ntw .addNewRowAlwaysVisibleButtonPushed {
+    background: url(../img/newRowVisible_over.png);
+}
+.epm-ntw .printButton {
+    background: url(../img/drukuj.png);
+}
+.epm-ntw .printButton:hover {
+    background: url(../img/drukuj_over.png);
+}
+.epm-ntw .saveTableButton {
+    background: url(../img/zapisz_koszyk.png);
+}
+.epm-ntw .saveTableButton:hover {
+    background: url(../img/zapisz_koszyk_over.png);
+}
+.epm-ntw .pinWindowButton {
+    background: url(../img/pin.png);
+}
+.epm-ntw .showHideTableToolbarButton {
+    background: url(../img/sub_menus_btn.png);
+}
+.epm-ntw .showHideTableToolbarButton:hover {
+    background: url(../img/sub_menus_pressed_btn.png);
+}
+.epm-ntw .errorIcon {
+    background: url(../img/icon-error.gif);
+    width: 32px;
+    height: 32px;
+}
+.epm-ntw .warningIcon {
+    background: url(../img/icon-warning.gif);
+    width: 32px;
+    height: 32px;
+}
+.epm-ntw .infoIcon {
+    background: url(../img/icon-info.gif);
+    width: 32px;
+    height: 32px;
+}
+.epm-ntw .questionIcon {
+    background: url(../img/icon-question.gif);
+    width: 32px;
+    height: 32px;
+}
+.epm-ntw .helpButton {
+    background: url(../img/help_icon.png);
+    width: 16px;
+    height: 16px;
+    background-position: center;
+}
+.epm-ntw .pinButton {
+    background: url(../img/pin_icon.png);
+    width: 16px;
+    height: 16px;
+    background-position: center;
+}
+
+.epm-ntw .alert-editor div {
+    padding-top: 4px;
+    padding-bottom: 0px;
+}
+
+.epm-ntw .alert-editor td div {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.epm-ntw .alert-editor .modal-footer {
+    padding-top: 8px;
+}
+
+.epm-ntw div.k-window-content {
+    padding-top: 0px;
+}
+
+/*
+form.ng-dirty.epm-ntw-alert-editor-form.ng-invalid-required,.ng-invalid {
+    border: 1px solid red !important;
+}
+*/
+form.ng-dirty.epm-ntw-alert-editor-form input.ng-invalid, span.alerts-drop-down-list.ng-invalid{
+    border: 1px solid red !important;
+    box-shadow: none;
+}
+
+form.ng-dirty.epm-ntw-alert-editor-form input.ng-valid,  span.alerts-drop-down-list.ng-valid{
+    border: 1px solid #ccc !important;
+    
+}
+
+form.ng-dirty.epm-ntw-alert-editor-form span.k-autocomplete,
+span.alerts-drop-down-list span { /*This stops doubling border (on span & input) for kendo generated elements */
+    box-shadow: none; 
+    border: 0px !important;  
+}
+.epm-ntw-alert-editor-form .modal-header {
+    border-bottom: none;
+}
+
+.epm-ntw-alert-editor-form label {
+    line-height: 13px;
+    margin-top: 8px;
+}
+
+.epm-ntw-alert-editor-form input {
+    font-size: 11px;
+}
+
+epm-ntw-alerts-editor-directive div.k-window {
+    padding-top: 0px;
+}
+
+epm-ntw-alerts-editor-directive .k-window-title {
+    font-size: 13px;
+    padding-top: 3px;
+}
+
+epm-ntw-alerts-editor-directive .k-radio-label {
+    padding-left: 22px;
+    padding-top: 2px;
+}
+
+epm-ntw-alerts-editor-directive .k-autocomplete.k-state-hover {
+    background-color: #FFF;
+}
+
+.epm-ntw-alert-editor-form .col-xs-10 label {
+    margin-top: 4px;
+}
+
+.epm-ntw-alert-editor-form .select select {
+    margin-top: 4px;
+}
+
+.inputWithArrowDown {
+    background-image:url('../img/arrow_down.png');
+    background-repeat:no-repeat;
+    background-position:96% center;
+    background-size:6px 6px;
+}
+
+.alertConditionsTable {
+    background-color: white;
+    overflow: auto;
+}
+
+.alertConditionsTable th {
+    line-height: 20px;
+}
+
+.alertConditionsTable select {
+    font-family: inherit;
+    margin-left:auto; 
+    margin-right:auto;    
+}
+
+.alertConditionsTable td {
+    vertical-align: middle;
+    height: 35px !important;
+}
+
+.alertConditionsTable td div {
+    background-position: center; 
+    text-align: center;
+}
+
+.alertEditorButton {
+    height: 28px;
+    width: 28px;
+    margin: auto;
+}
+
+/*.alertConditionsTable .select {
+  position: relative;
+  border: 1px solid #ddd;
+}
+.alertConditionsTable .select:before, .select:after {
+  content: " ";
+  position: absolute;
+  pointer-events: none;
+}
+.alertConditionsTable .select:before {
+  top: 0;
+  right: 0;
+  background-color: #f5f5f5;
+  border-left: 1px solid #ddd;
+}
+.alertConditionsTable .select:after {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+  right: 10%;
+  top: 55%;
+  margin-top: -3px;
+}
+.alertConditionsTable .select select {
+  padding: .58em 2.5em .5em .4em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  position: absolute;
+  top: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+.alertConditionsTable .select select::-ms-expand {
+  display: none;
+}*/
+
+.alertEditorButton {
+    margin-top: 4px !important;
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+
+
+
+/******************************************************************
+** DEMO
+*******************************************************************/
+
+.demoMenu {
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: linear-gradient(#4ed4fe 10%, #005fb2 90%);
+}
+.demoButton {
+    border-radius: 5px;
+    border: 1px solid #545454;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 28px;
+}
+.demoComboBox {
+    border-radius: 5px;
+    border: 1px solid #545454;
+}
+.flagButton {
+    margin-right: 5px;
+    height: 27px;
+    border-radius: 5px;
+    border: 1px solid #545454;
+    cursor: pointer;
+    /* 	margin-bottom: 10px; */
+}
+.inlineWidgets {
+    display: inline-block;
+}
+body>div.epm-ntw .k-grid-header-locked {
+    height: auto !important;
+}
+.autoComplete:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    /*w hex: #6D6D6D;*/
+    color: rgba(109, 109, 109, 0.6);
+}
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+epm-ntw-alerts-list-directive .epm-ntw .k-grid-header .k-grid-header-wrap th,
+epm-ntw-transactions-table-directive .epm-ntw .k-grid-header .k-grid-header-wrap th {
+    padding: 2px 0;
+}

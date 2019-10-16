@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0038)https://online.mbank.pl/csite/top.aspx -->
+<html ng-app="epmNtw" xmlns="http://www.w3.org/1999/xhtml" class="k-webkit k-webkit70 ng-scope"><link type="text/css" id="dark-mode" rel="stylesheet" href="https://online.mbank.pl/csite/top.aspx"><style type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+		<title>mBank</title>
+
+		
+        <meta name="description" content="mBank">
+		<meta name="keywords" content="mBank">
+
+	    <script type="text/javascript" src="./epmNtwLibraries.js.pobrane" charset="UTF-8"></script>
+        <script type="text/javascript" src="./epmNtw.all.min.js.pobrane" charset="UTF-8"></script>
+		
+        <script type="text/javascript">
+            var epmNtwApiInitialized = false;
+
+            function setInitialParameters(TJL, epmPlusPushXDPUrl) {
+                if (!epmNtwApiInitialized) {
+                    epmNtwApiInitialized = true;
+                    epmNtwApi.externalApi.setInitialParameters(TJL, epmPlusPushXDPUrl);
+                }
+            }
+
+            function openQuotesTableWindow(isins, windowTitle, hiddenColumns) {
+                epmNtwApi.externalApi.openQuotesTableWindow(isins, windowTitle, hiddenColumns);
+            }
+		</script>
+	<link type="text/css" rel="stylesheet" href="./epmNtw-base.css" id="epmNtwKendoTheme"></head>
+
+	<body oncontextmenu="return false">
+	
+</body></html>

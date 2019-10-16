@@ -1,0 +1,18 @@
+CREATE TABLE uzytkownicy( ID INT UNSIGNED NOT NULL AUTO_INCREMENT, identyfikator VARCHAR(45) NOT NULL, haslo VARCHAR(60) NOT NULL, email VARCHAR(45) NOT NULL, imie VARCHAR(45) NOT NULL, nazwisko VARCHAR(45) NOT NULL, numer_konta BIGINT(17) UNSIGNED NOT NULL, stan_konta FLOAT UNSIGNED DEFAULT 0, PRIMARY KEY (ID)); CREATE TABLE przelewy( ID INT UNSIGNED NOT NULL AUTO_INCREMENT, id_nad INT UNSIGNED NOT NULL, id_odb INT UNSIGNED NOT NULL, num_konta_nad BIGINT(17) UNSIGNED NOT NULL, num_konta_odb BIGINT(17) UNSIGNED NOT NULL, kwota FLOAT UNSIGNED NOT NULL, data DATE NOT NULL, nazwa_odb VARCHAR(45) NOT NULL, tytul VARCHAR(45) NOT NULL, status ENUM('0','1','2'), PRIMARY KEY (ID), FOREIGN KEY (id_nad) REFERENCES uzytkownicy(ID), FOREIGN KEY (id_nad) REFERENCES uzytkownicy(ID));
+
+
+
+DELIMITER $$
+CREATE PROCEDURE zatwierdz (myID INT, myStatus VARCHAR(1)) 
+BEGIN
+IF myStatus=1 THEN
+  UPDATE przelewy SET status = myStatus WHERE ID = myID;
+  UPDATE uzytkownicy JOIN (SELECT * FROM przelewy WHERE przelewy.ID=myID) T1 ON uzytkownicy.ID = T1.id_odb SET uzytkownicy.stan_konta=(uzytkownicy.stan_konta+T1.kwota) 
+  WHERE uzytkownicy.ID=T1.id_odb;
+  ELSEIF myStatus=2 THEN 
+       UPDATE przelewy SET status = myStatus WHERE ID = myID;
+  	 UPDATE uzytkownicy JOIN (SELECT * FROM przelewy WHERE przelewy.ID=myID) T1 ON uzytkownicy.ID = T1.id_nad SET uzytkownicy.stan_konta=(uzytkownicy.stan_konta+T1.kwota) 
+  	 WHERE uzytkownicy.ID=T1.id_nad;
+  END IF;
+END $$
+DELIMITER ;

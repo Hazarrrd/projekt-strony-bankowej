@@ -1,0 +1,175 @@
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FeedbackSurvey = function (_HTMLElement) {
+  _inherits(FeedbackSurvey, _HTMLElement);
+
+  function FeedbackSurvey() {
+    _classCallCheck(this, FeedbackSurvey);
+
+    var _this = _possibleConstructorReturn(this, (FeedbackSurvey.__proto__ || Object.getPrototypeOf(FeedbackSurvey)).call(this));
+
+    _this._id = FeedbackSurvey.counter;
+    //Sahdow DOM
+    _this._root = _this.attachShadow({ mode: "open" });
+    _this.srcMessageId = _this.getAttribute("src-message-id");
+    _this.srcSystemCode = _this.getAttribute("src-system-code");
+    _this.feedbackMode = _this.getAttribute("feedback-mode");
+    _this.reactModeEnabled = _this.getAttribute('react-mode-enabled');
+    _this.componentVersion = "1.0.0";
+    //Element
+
+    //Data
+
+    var $template = document.createElement("template");
+    var dynamicIdPrefix = "f" + _this._id;
+    var triggerLabelText = _this.feedbackMode === 'header-feedback' ? 'Oceń' : 'Oceń wiadomość';
+
+    $template.innerHTML = "\n\n        <style> \n#" + dynamicIdPrefix + "feedback-survey {\n  line-height: 1;\n  display: block !important;\n  float: left;\n}\n#" + dynamicIdPrefix + "feedback-survey .clear-both {\n  clear: both;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] {\n  position: absolute;\n  visibility: hidden;\n  top: -9999px;\n  right: 0px;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label {\n  position: relative;\n  margin-left: 10px;\n  background-color: white;\n  border-radius: 100px;\n  -webkit-border-radius: 100px;\n  -moz-border-radius: 100px;\n  line-height: 14px;\n  display: inline-block;\n  padding: 6px 20px 4px 20px;\n  font-family: FSLola, 'FS Lola';\n  font-weight: normal;\n  text-align: center;\n  text-shadow: none;\n  text-transform: uppercase;\n  cursor: pointer;\n  color: #da1600;\n  border: 1px solid gainsboro;\n  background: none;\n  box-shadow: none;\n  font-size: 11px;\n  white-space: nowrap;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label:hover {\n  background: #ececec;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label:before {\n  content: '';\n  background-image: url('/venezia/gfx/x_close_button.svg');\n  background-repeat: no-repeat;\n  display: block;\n  width: 16px;\n  height: 16px;\n  position: absolute;\n  z-index: 1000102;\n  top: -119px;\n  right: 14px;\n  cursor: pointer;\n  font-weight: bold;\n  visibility: hidden;\n  text-align: center;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked + label {\n  background: #fff;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked + label:hover {\n  background: #fff !important;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked + label:after {\n  content: ' ';\n  display: block;\n  height: 100%;\n  width: 100%;\n  position: fixed;\n  z-index: 1000100;\n  left: 0;\n  top: 0;\n  background-color: #000000;\n  background-color: rgba(0, 0, 0, 0.3);\n  overflow-x: hidden;\n  transition: 0.5s;\n  visibility: visible;\n  cursor: default;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked + label:before {\n  visibility: visible;\n}\n#" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked ~ .survey {\n  z-index: 1000101;\n  display: inline-block;\n  transform: scale(1, 1);\n  opacity: 1;\n  transition: opacity, transform, visibility;\n  transition-duration: 0s;\n  visibility: visible;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey {\n  line-height: normal;\n  visibility: hidden;\n  display: inline-block;\n  position: absolute;\n  right: 1px;\n  bottom: 40px;\n  border-radius: 3px;\n  background-color: #fafafa;\n  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.22), 0px 0px 1px rgba(0, 0, 0, 0.32);\n  width: 336px;\n  min-height: 117px;\n  border-radius: 4px;\n  z-index: 1000101;\n  opacity: 0;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey.show-animation {\n  transition: opacity, transform, visibility;\n  transition-duration: 0.5s;\n  transform: scale(0.2, 0.2) translate(637px, 374px);\n}\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"] {\n  visibility: hidden;\n  position: absolute;\n  top: -10000px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"question\"]:checked ~ .header,\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"question\"]:checked ~ .questions {\n  display: inline-block;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"question\"]:checked ~ .thanks {\n  display: none;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"thanks\"]:checked ~ .header,\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"thanks\"]:checked ~ .questions {\n  display: none;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey [type=\"radio\"][name=\"" + dynamicIdPrefix + "feedback-survey-wizard\"][value=\"thanks\"]:checked ~ .thanks {\n  display: inline-block;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey .header-container {\n  text-align: center;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey .header-container .header {\n  line-height: normal;\n  display: inline-block;\n  color: #323232;\n  padding: 16px 18px 0px 18px;\n  font-family: Open Sans;\n  font-size: 16px;\n  color: #201C17;\n  font-weight: 300;\n  text-decoration: none solid #201c17;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol {\n  padding: 0;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions {\n  list-style-type: none;\n  text-align: center;\n  margin: 5px 10px 0px 25px;\n  white-space: nowrap;\n  padding-left: 0px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li input[type=radio] {\n  position: absolute;\n  visibility: hidden;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li input[type=radio]:checked + label {\n  transform: scale(1.3, 1.3);\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li label {\n  height: 60px;\n  width: 55px;\n  display: inline-block;\n  transition: transform 0.1s;\n  cursor: pointer;\n  transform: rotate(0.002deg);\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li label:hover {\n  transform: scale(1.28, 1.28);\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i5 + label {\n  background-image: url('/venezia/gfx/feedback/5.svg');\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 40px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i4 + label {\n  background-image: url('/venezia/gfx/feedback/4.svg');\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 40px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i3 + label {\n  background-image: url('/venezia/gfx/feedback/3.svg');\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 40px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i2 + label {\n  background-image: url('/venezia/gfx/feedback/2.svg');\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 40px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i1 + label {\n  background-image: url('/venezia/gfx/feedback/1.svg');\n  background-position: center;\n  background-repeat: no-repeat;\n  background-size: 40px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks {\n  background-color: #fafafa;\n  position: absolute;\n  width: 336px;\n  list-style-type: none;\n  margin: -5px 10px 0px 10px;\n  white-space: nowrap;\n  display: none;\n  left: -10px;\n  top: 5px;\n  min-height: 208px;\n  border-radius: 3px;\n  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.22), 0px 0px 1px rgba(0, 0, 0, 0.32);\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container {\n  float: left;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content {\n  display: inline-block;\n  width: 336px;\n  position: relative;\n  text-align: left;\n  margin-top: 2px;\n  line-height: 20px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content .header-container .header-icon {\n  float: left;\n  background-image: url('/venezia/gfx/white_checkmark_on_green_circle.svg');\n  background-repeat: no-repeat;\n  width: 24px;\n  height: 25px;\n  margin: 24px 0 0 24px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content .header-container .header-text {\n  float: left;\n  margin: 20px 0 0 17px;\n  line-height: 30px;\n  height: 22px;\n  font-family: Open Sans;\n  font-size: 16px;\n  color: #201C17;\n  font-weight: 600;\n  text-decoration: none solid #201c17;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content .button-panel {\n  float: left;\n  margin: 10px 0 12px 16px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > input {\n  margin-top: 10px;\n  width: 246px;\n  height: 35px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button {\n  margin-top: 5px;\n  margin-bottom: 10px;\n  height: 32px;\n  width: auto;\n  padding: 2px 0px 0px 2px;\n  border-radius: 16px;\n  text-decoration: none solid #ffffff;\n  text-align: center;\n  font-family: FSLola, 'FS Lola';\n  font-size: 16px;\n  position: relative;\n  display: inline-block;\n  text-shadow: none;\n  cursor: pointer;\n  border: none;\n  text-transform: uppercase;\n  outline-style: none;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button.btn-red {\n  color: #ffffff;\n  background-color: #DA1600;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button.btn-red#thanks-button {\n  width: 96px;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button.btn-red:hover {\n  background-color: #B81C0A;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button.btn-red:focus {\n  background-color: #972114;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content textarea {\n  overflow: hidden;\n  font-family: \"Open Sans\";\n  font-size: 16px;\n  color: #525455;\n  font-weight: 300;\n  resize: none;\n  width: 272px;\n  height: 59px;\n  padding: 15px 15px 0 15px;\n  white-space: pre-wrap;\n  margin: 25px 0px 0px 0px;\n  box-shadow: none;\n  background-color: #FFFFFF;\n  border-radius: 3px;\n  outline-style: none;\n  border: 1px #E4E4E4 solid;\n  border-bottom: 1px solid #959595;\n}\n#" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content textarea:focus {\n  border-bottom: 2px solid #046EB1;\n  margin-bottom: -1px;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i5 + label {\n  background-image: url('/venezia/gfxOrange/feedback/5.svg');\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i4 + label {\n  background-image: url('/venezia/gfxOrange/feedback/4.svg');\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i3 + label {\n  background-image: url('/venezia/gfxOrange/feedback/3.svg');\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i2 + label {\n  background-image: url('/venezia/gfxOrange/feedback/2.svg');\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.questions li #" + dynamicIdPrefix + "feedback-survey-i1 + label {\n  background-image: url('/venezia/gfxOrange/feedback/1.svg');\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks {\n  background-color: #ffffff;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button {\n  background-color: #FF7900;\n  outline-style: none;\n  opacity: 1;\n  transition: opacity;\n  transition-duration: 0.5s;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button:hover {\n  background-color: #FF7900;\n  opacity: 0.7;\n  transition: opacity;\n  transition-duration: 0.5s;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container .main-content div > button:focus {\n  background-color: #FF7900;\n  opacity: 0.65;\n  transition: opacity;\n  transition-duration: 0.5s;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container textarea {\n  color: #444444;\n  border: 1px #CCCCCC solid;\n  border-bottom: 1px solid #999999;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey .survey ol.thanks .thanks-container textarea:focus {\n  border-bottom: 2px solid #085ebd;\n  margin-bottom: -1px;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label {\n  font-family: \"HelveticaNeue\";\n  font-weight: normal;\n  color: #FF7900;\n  font-size: 11px;\n}\n:host([theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label:before {\n  background-image: url('/venezia/gfxOrange/x_close_button.svg');\n}\n:host([feedback-mode=\"header-feedback\"]) {\n  position: static;\n  margin-left: -156px;\n  margin-right: 5px;\n  margin-top: 15px;\n  order: 3;\n}\n:host([feedback-mode=\"header-feedback\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] {\n  position: absolute;\n  visibility: hidden;\n  top: -9999px;\n  right: 0px;\n}\n:host([feedback-mode=\"header-feedback\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label {\n  background: 0;\n  box-shadow: none;\n  border: 1px solid #5d5d5d;\n  border-radius: 15px;\n  margin-left: -8px;\n  text-transform: uppercase;\n  height: 23px;\n  width: 30px;\n  font-size: 13px;\n  line-height: 23px;\n  text-align: center;\n  font-family: FSLola, 'FS Lola';\n  font-weight: normal;\n  padding: 0 5px 0 5px;\n  color: #000000;\n  float: left;\n  position: relative;\n  top: 6px;\n}\n:host([feedback-mode=\"header-feedback\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"]:checked + label:before {\n  top: 39px;\n  right: 12px;\n}\n:host([feedback-mode=\"header-feedback\"]) #" + dynamicIdPrefix + "feedback-survey .survey {\n  top: 48px;\n  right: 123px;\n  transform: scale(0.2, 0.2) translate(637px, -374px);\n}\n:host([feedback-mode=\"header-feedback\"][react-mode-enabled=\"true\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label {\n  background: 0;\n  box-shadow: none;\n  border: 1px solid #5d5d5d;\n  border-radius: 15px;\n  margin-left: 0px;\n  text-transform: uppercase;\n  height: 23px;\n  width: 30px;\n  box-sizing: content-box;\n  font-size: 13px;\n  line-height: 24px;\n  text-align: center;\n  font-family: FSLola, 'FS Lola';\n  font-weight: normal;\n  padding: 0 5px 0 5px;\n  color: #000000;\n  float: left;\n  position: relative;\n  top: 0px;\n}\n:host([feedback-mode=\"header-feedback\"][react-mode-enabled=\"true\"]) #" + dynamicIdPrefix + "feedback-survey .survey {\n  top: 45px;\n  right: 102px;\n  transform: scale(0.2, 0.2) translate(637px, -374px);\n}\n:host([feedback-mode=\"header-feedback\"][theme=\"orange\"]) {\n  margin-top: 13px;\n}\n:host([feedback-mode=\"header-feedback\"][theme=\"orange\"]) #" + dynamicIdPrefix + "feedback-survey input[type=\"checkbox\"] + label {\n  top: 8px;\n  font-family: \"HelveticaNeue\";\n  font-size: 11px;\n}\n\n </style>\n     <div id=\"" + dynamicIdPrefix + "feedback-survey\">\n                <input id=\"" + dynamicIdPrefix + "feedback-survey-trigger\" type=\"checkbox\" />\n\n                <label class=\"trigger-label btn-gray-gradient btn-gray-gradient-muted\" for=\"" + dynamicIdPrefix + "feedback-survey-trigger\" tabIndex=\"0\">" + triggerLabelText + "</label>\n                <div class=\"survey\">\n                    <input type=\"radio\" name=\"" + dynamicIdPrefix + "feedback-survey-wizard\" value=\"question\" checked/>\n                    <input type=\"radio\" name=\"" + dynamicIdPrefix + "feedback-survey-wizard\" value=\"thanks\" />\n\n                    <div class=\"header-container\">\n                      <span class=\"header\">Jak nas oceniasz?</span>\n                    </div>\n                    <ol class=\"questions\">\n                        <li class=\"feedback-question\">\n                            <input type=\"radio\" name=\"" + dynamicIdPrefix + "radio-group-1\" id=\"" + dynamicIdPrefix + "feedback-survey-i1\" value=\"1\" />\n                            <label for=\"" + dynamicIdPrefix + "feedback-survey-i1\"></label>\n                            <input type=\"radio\" name=\"" + dynamicIdPrefix + "radio-group-1\" id=\"" + dynamicIdPrefix + "feedback-survey-i2\" value=\"2\"/>\n                            <label for=\"" + dynamicIdPrefix + "feedback-survey-i2\"></label>\n                            <input type=\"radio\" name=\"" + dynamicIdPrefix + "radio-group-1\" id=\"" + dynamicIdPrefix + "feedback-survey-i3\" value=\"3\"/>\n                            <label for=\"" + dynamicIdPrefix + "feedback-survey-i3\"></label>\n                            <input type=\"radio\" name=\"" + dynamicIdPrefix + "radio-group-1\" id=\"" + dynamicIdPrefix + "feedback-survey-i4\" value=\"4\"/>\n                            <label for=\"" + dynamicIdPrefix + "feedback-survey-i4\"></label>\n                            <input type=\"radio\" name=\"" + dynamicIdPrefix + "radio-group-1\" id=\"" + dynamicIdPrefix + "feedback-survey-i5\" value=\"5\"/>\n                            <label for=\"" + dynamicIdPrefix + "feedback-survey-i5\"></label>\n                        </li>\n                    </ol>\n                    <ol class=\"thanks\">\n                        <li class=\"feedback-question\">\n                        <span class=\"thanks-container\">\n                            <span class=\"main-content\">\n                              <div class=\"header-container\">\n                                <div class=\"header-icon\"></div>\n                                <div class=\"header-text\">Dzi\u0119kujemy!</div>\n                                <div class=\"clear-both\"/>\n                              </div>\n                                <textarea id=\"thanks-text\" name=\"firstname\" class=\"single-row expanding exp\" type=\"text\" placeholder=\"Dodaj komentarz do oceny\"  maxlength=\"500\"></textarea>\n                                <div class=\"button-panel\">\n                                  <button id=\"thanks-button\"class=\"btn-red\">Wy\u015Blij</button>\n                                </div>\n                            </span>\n                        </span>\n                        </li>\n                    </ol>\n                </div>\n            </div>\n";
+
+    if (window.ShadyCSS) ShadyCSS.prepareTemplate($template, "feedback-survey");
+    _this._$template = document.importNode($template.content, true);
+    _this.dynamicIdPrefix = dynamicIdPrefix;
+    return _this;
+  }
+
+  _createClass(FeedbackSurvey, [{
+    key: "_prefix",
+    value: function _prefix(id) {
+      return this.dynamicIdPrefix + id;
+    }
+  }, {
+    key: "_fixTextarea",
+    value: function _fixTextarea(textArea) {
+      textArea.addEventListener("input", function (event) {
+
+        var clonedArea = event.target.cloneNode();
+        event.target.parentNode.insertBefore(clonedArea, event.target);
+        clonedArea.style.height = 'auto';
+        clonedArea.value = event.target.value;
+
+        event.target.style.height = clonedArea.scrollHeight < 59 ? 59 + 'px' : clonedArea.scrollHeight + 'px';
+
+        event.target.parentNode.removeChild(clonedArea);
+      }, false);
+    }
+  }, {
+    key: "_clearText",
+    value: function _clearText(textArea) {
+      textArea.value = "";
+      textArea.dispatchEvent(new Event("input"));
+    }
+  }, {
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      var _this2 = this;
+
+      if (window.ShadyCSS) ShadyCSS.styleElement(this);
+      this._root.appendChild(this._$template);
+      this._$LabelFeedbackSurvey = this._root.querySelector('[for=' + this.dynamicIdPrefix + 'feedback-survey-trigger');
+      this._$LabelFeedbackSurvey.innerText = this.getAttribute('feedback-mode') === 'header-feedback' ? 'Oceń' : 'Oceń wiadomość';
+      var textArea = this._root.querySelector('#' + this.dynamicIdPrefix + 'feedback-survey textarea.exp');
+      var survey = this._root.getElementById(this._prefix('feedback-survey'));
+      var surveyId;
+      var page;
+      survey.style.display = 'inline-block';
+      this._fixTextarea(textArea);
+      //open survey
+      this._root.querySelector('#' + this.dynamicIdPrefix + 'feedback-survey-trigger').addEventListener('click', function (event) {
+        //reset value
+        if (event.target.checked) {
+          //when open only, not on close
+          _this2._root.querySelector('.survey').classList.remove('show-animation');
+          _this2._root.querySelector('#' + _this2.dynamicIdPrefix + 'feedback-survey [name="' + _this2.dynamicIdPrefix + 'feedback-survey-wizard"][value="question"]').checked = true;
+          _this2._clearText(textArea);
+        }
+      });
+      //select face
+      this._root.querySelector('#' + this.dynamicIdPrefix + 'feedback-survey .feedback-question').addEventListener('click', function (event) {
+        if (event.target.tagName == 'INPUT') {
+          var pageLocation = window.location.pathname + window.location.hash;
+          var selectedValue = event.target.value;
+          var selectedElement = event.target;
+          selectedElement.parentElement.style.pointerEvents = "none";
+          return _this2.saveFeedbackSurveyMethod({
+            Rating: selectedValue,
+            SrcMessageId: _this2.srcMessageId,
+            SrcSystemCode: _this2.srcSystemCode,
+            PageLocation: pageLocation,
+            ComponentVersion: _this2.componentVersion
+          }).then(function (data) {
+            surveyId = data.FeedbackId;
+            page = pageLocation;
+            selectedElement.parentElement.style.removeProperty('pointer-events');
+            selectedElement.checked = false;
+            _this2._root.querySelector('#' + _this2.dynamicIdPrefix + 'feedback-survey [name="' + _this2.dynamicIdPrefix + 'feedback-survey-wizard"][value="thanks"]').checked = true;
+          }).catch(function (jqXHR, textStatus) {
+            selectedElement.checked = false;
+            selectedElement.parentElement.style.removeProperty('pointer-events');
+            _this2._root.getElementById(_this2._prefix('feedback-survey-trigger')).checked = false;
+          });
+        }
+      });
+      //send message
+      this._root.querySelector('#' + this.dynamicIdPrefix + 'feedback-survey #thanks-button').addEventListener('click', function (event) {
+        var thanksText = _this2._root.querySelector('#' + _this2.dynamicIdPrefix + 'feedback-survey #thanks-text').value;
+        _this2._root.querySelector('.survey').classList.add('show-animation');
+        if (thanksText != "") {
+          return _this2.saveMessageFeedbackSurveyMethod({
+            SurveyId: surveyId,
+            Comment: thanksText
+          }).then(function (data) {
+            _this2._root.getElementById(_this2._prefix('feedback-survey-trigger')).checked = false;
+          }).catch(function (jqXHR, textStatus) {
+            _this2._root.getElementById(_this2._prefix('feedback-survey-trigger')).checked = false;
+          });
+        } else {
+          _this2._root.getElementById(_this2._prefix('feedback-survey-trigger')).checked = false; //close survey
+        }
+      });
+    }
+  }, {
+    key: "saveFeedbackSurveyMethod",
+    value: function saveFeedbackSurveyMethod(params) {
+      var url = this.feedbackMode === 'header-feedback' ? Ebre.Venezia.Adv.Urls.Survey.SaveFeedbackSurvey : Ebre.Venezia.Adv.Urls.Survey.SaveMessageFeedbackSurvey;
+      return this.makeVeneziaRequest(url, params);
+    }
+  }, {
+    key: "saveMessageFeedbackSurveyMethod",
+    value: function saveMessageFeedbackSurveyMethod(params) {
+      var url = Ebre.Venezia.Adv.Urls.Survey.UpdateFeedbackSurvey;
+      return this.makeVeneziaRequest(url, params);
+    }
+  }, {
+    key: "makeVeneziaRequest",
+    value: function makeVeneziaRequest(url, params) {
+      return new Promise(function (resolve, reject) {
+        Ebre.Proxy.VeneziaPostJSON({
+          url: url,
+          veneziaErrorSignificanceLevel: Ebre.Venezia.ErrorSignificanceLevel.IgnoreAllErrors,
+          data: JSON.stringify(params)
+        }).then(resolve).fail(function (m) {
+          Ebre.Common.createErrorMessage(I18n.t('feedback.errorText'));
+          reject(m);
+        });
+      });
+    }
+  }], [{
+    key: "counter",
+    get: function get() {
+      FeedbackSurvey._counter = (FeedbackSurvey._counter || 0) + 1;
+      return FeedbackSurvey._counter;
+    }
+  }]);
+
+  return FeedbackSurvey;
+}(HTMLElement);
+
+window.customElements.define("feedback-survey", FeedbackSurvey);
